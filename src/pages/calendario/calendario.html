@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Calendario
+    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="cal">
+  <ion-calendar class="cal" no-padding #calendar lang="es" [(events)]="currentEvents" (onDaySelect)="onDaySelect($event)"
+    (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+
+  <div *ngIf="hayEvento">
+    <ion-item *ngFor="let item of eventosToView" (click)="mostrarDetalles(item)">
+      {{item.tittle}}
+    </ion-item>
+  </div>
+
+  <div *ngIf="event!=null">
+    <ion-fab right bottom (click)="add()">
+      <button ion-fab color="blue">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
+
+</ion-content>
